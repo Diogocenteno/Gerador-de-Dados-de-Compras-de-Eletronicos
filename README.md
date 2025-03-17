@@ -1,120 +1,156 @@
-README - Gerador de Dados Fictícios
-Descrição
-Este código Python é um gerador de dados fictícios que pode ser utilizado para simular dados de vendas, produtos e locais. Ele utiliza bibliotecas como Faker para gerar dados como nomes, endereços e datas, além de listas predefinidas para criar informações de lojas e produtos. A principal aplicação desse script é para testes, protótipos e simulações em ambientes de desenvolvimento.
+Gerador de Planilha de Compras Eletrônicas
+Este projeto é um gerador de dados fictícios para compras eletrônicas, desenvolvido em Python com interface gráfica utilizando a biblioteca tkinter. O programa permite a criação de planilhas personalizadas com informações como clientes, produtos, métodos de pagamento, localização e status de transações. Além disso, oferece a possibilidade de exportar os dados gerados em formatos como Excel (xlsx) e CSV.
 
-O código pode gerar dados como:
+Funcionalidades
+Geração de Dados Fictícios:
 
-Nomes e endereços de lojas de diferentes categorias.
-Produtos eletrônicos variados.
-Cidades e estados de diferentes países.
-Datas e valores aleatórios para simulação de transações ou vendas.
-Bibliotecas Requeridas
-O código faz uso das seguintes bibliotecas:
+Gera dados de clientes, produtos, métodos de pagamento, localização e status de transações.
 
-pandas: Biblioteca principal para manipulação e criação de DataFrames.
-random: Usada para gerar números aleatórios.
-Faker: Utilizada para gerar dados fictícios como nomes, endereços, entre outros.
-datetime: Para manipulação de datas.
-string: Utilizada para manipulação de strings (exemplo: gerar senhas aleatórias).
-tqdm: Biblioteca para criar barras de progresso para loops.
-locale: Usada para definir a localidade para formatos de datas e números.
-Instalação das bibliotecas
+Personalização de IDs, nomes, categorias, fabricantes, entregadores, valores, datas, lojas, vendedores, comissões, países, estados e cidades.
+
+Configurações de Geração:
+
+Definição do número de linhas.
+
+Ajuste de porcentagens de acréscimo para diferentes métodos de pagamento (à vista, Pix, cartão, boleto).
+
+Formatação personalizada de IDs de clientes e produtos.
+
+Seleção de intervalos de datas para as compras.
+
+Escolha de colunas e países a serem incluídos na planilha.
+
+Personalização de Dados:
+
+Adição e remoção de produtos, lojas, vendedores, clientes e domínios de email.
+
+Adição e remoção de países, estados e cidades.
+
+Exportação de Dados:
+
+Salvar os dados gerados em formato Excel (xlsx) ou CSV.
+
+Escolha do nome do arquivo e local de salvamento.
+
+Visualização dos Dados:
+
+Exibição dos dados gerados em uma tabela interativa.
+
+Ajuste automático da largura das colunas.
+
+Exportação dos dados visualizados para um arquivo de texto (txt).
+
+Interface Gráfica Amigável:
+
+Abas para configurações, personalização de produtos, lojas, vendedores, clientes, email e região.
+
+Barra de progresso e cronômetro para acompanhamento da geração de dados.
+
+Menu de contexto com opções de copiar e limpar.
+
+Requisitos
+Python 3.x
+
+Bibliotecas necessárias:
+
+pandas
+
+faker
+
+tkinter
+
+locale
+
+threading
+
+time
+
+Para instalar as bibliotecas necessárias, execute o seguinte comando:
+
 bash
-Copiar
-pip install pandas faker tqdm
-Estrutura do Código
-1. Gerador de Dados Fictícios
-A primeira parte do código inicializa o gerador de dados fictícios utilizando a biblioteca Faker.
-
-python
-Copiar
-fake = Faker()
-O objeto fake é utilizado para gerar dados como:
-
-Nome de empresas/lojas
-Endereços fictícios
-Nomes completos
-Datas de nascimento e muito mais.
-2. Listas de Lojas
-O código contém uma lista de nomes de lojas fictícias, variando entre grandes redes de varejo, lojas de tecnologia, moda e cosméticos. Essas lojas são usadas para simular compras ou dados relacionados ao comércio.
-
-3. Produtos Eletrônicos
-A variável produtos_eletronicos contém uma lista extensa de produtos eletrônicos, como smartphones, drones, câmeras, entre outros. Esses produtos são usados para gerar dados de vendas ou estoque.
-
-4. Estados e Cidades
-Um dicionário chamado estados_cidades contém uma lista de países, e para cada país, são listados seus estados e respectivas cidades. Essa estrutura é útil para gerar endereços ou locais de venda.
-
-5. Geração de Dados Aleatórios
-A geração de dados aleatórios é feita de maneira que se cria registros de compras ou transações:
-
-Para cada transação, são gerados:
-Nome de loja aleatório
-Produto aleatório
-Quantidade
-Preço
-Data de compra
-Localização (estado e cidade)
-A geração desses dados pode ser personalizada, e você pode escolher o número de registros que deseja gerar.
-
-6. Exemplo de Criação de DataFrame
-Em um cenário típico, você pode querer criar um DataFrame do pandas com os dados gerados. Aqui está um exemplo de como gerar e exibir os dados simulados:
-
-python
-Copiar
-# Gerar uma lista de transações fictícias
-transacoes = []
-for i in tqdm(range(1000)):  # Exemplo de geração de 1000 transações
-    loja = random.choice(lojas)
-    produto = random.choice(produtos_eletronicos)
-    quantidade = random.randint(1, 10)
-    preco = random.uniform(10.0, 1000.0)
-    cidade_estado = random.choice(list(estados_cidades["Brazil"].values()))[0]  # Exemplo: "São Paulo"
-    data = fake.date_this_decade()
-    
-    transacoes.append({
-        "Loja": loja,
-        "Produto": produto,
-        "Quantidade": quantidade,
-        "Preço": preco,
-        "Data": data,
-        "Cidade/Estado": cidade_estado
-    })
-
-# Criar o DataFrame com as transações
-df = pd.DataFrame(transacoes)
-Isso gerará um DataFrame com informações sobre transações de vendas. Cada transação terá informações como:
-
-Loja onde o produto foi adquirido.
-Produto comprado.
-Quantidade comprada.
-Preço do produto.
-Data de compra.
-Localização da venda (Cidade/Estado).
-7. Personalizações
-Você pode modificar a lista de lojas, produtos ou adicionar novas categorias e tipos de dados que desejar. Para personalizar a geração de transações ou outro tipo de dado, basta ajustar as listas e funções de geração.
-
+Copy
+pip install pandas faker
 Como Usar
-Instalar Dependências: Primeiramente, instale as dependências necessárias usando o pip.
+Configurações:
 
-bash
-Copiar
-pip install pandas faker tqdm
-Rodar o Script: Depois de garantir que as dependências estão instaladas, execute o script diretamente no seu ambiente Python.
+Na aba "Configurações", defina o número de linhas, porcentagens de acréscimo, formato dos IDs, intervalo de datas, colunas e países desejados.
 
-bash
-Copiar
-python gerador_dados.py
-Gerar Dados: O código gerará automaticamente os dados com as configurações padrão. Se você quiser gerar uma quantidade diferente de transações ou personalizar a lista de lojas ou produtos, basta ajustar os parâmetros dentro do código.
+Personalização:
 
-Exemplo de Saída
-Após rodar o script, o DataFrame gerado pode ter a seguinte aparência:
+Nas abas de "Personalização", adicione ou remova produtos, lojas, vendedores, clientes, domínios de email, países, estados e cidades.
 
-Loja	Produto	Quantidade	Preço	Data	Cidade/Estado
-Magazine Luiza	Smartphone 5G	3	1200	2025-02-14	São Paulo
-Amazon	Drone com Câmera	1	800	2025-02-16	Rio de Janeiro
-Havan	Câmera 360 graus	2	350	2025-02-17	Belo Horizonte
-Nike Store	Fone de Ouvido Gaming	5	300	2025-02-19	Curitiba
-Os dados podem ser exportados para um arquivo CSV, por exemplo, para uso posterior.
+Geração de Dados:
 
-Conclusão
-Este gerador de dados fictícios é uma ferramenta útil para testes e desenvolvimento de protótipos, pois oferece uma maneira rápida de gerar grandes volumes de dados realistas e aleatórios.
+Clique em "Visualizar Dados" para gerar e visualizar os dados em uma tabela interativa.
+
+Use os botões "Salvar como Excel" ou "Salvar como CSV" para exportar os dados.
+
+Visualização:
+
+Na janela de visualização, ajuste as colunas automaticamente com o botão "Ajustar Colunas".
+
+Salve os dados em um arquivo de texto com o botão "Salvar em Bloco de Notas".
+
+Estrutura do Código
+O código está organizado em funções que lidam com diferentes aspectos do programa:
+
+Geração de Dados:
+
+gerar_dados: Gera os dados fictícios com base nas configurações definidas.
+
+gerar_id_com_formato: Gera IDs personalizados com base em um formato especificado.
+
+Interface Gráfica:
+
+atualizar_cronometro: Atualiza o cronômetro durante a geração de dados.
+
+marcar_desmarcar_colunas e marcar_desmarcar_paises: Permitem marcar ou desmarcar todas as colunas ou países de uma vez.
+
+adicionar_item e remover_item: Adicionam ou removem itens das listas de personalização.
+
+salvar_planilha: Salva os dados gerados em formato Excel ou CSV.
+
+visualizar_dados: Exibe os dados gerados em uma tabela interativa.
+
+Personalização:
+
+Funções para adicionar e remover produtos, lojas, vendedores, clientes, domínios de email, países, estados e cidades.
+
+Exemplo de Uso
+Configurações:
+
+Defina o número de linhas como 1000.
+
+Ajuste as porcentagens de acréscimo para os métodos de pagamento.
+
+Defina o formato dos IDs como ABC-123456 para clientes e XKIOPY-123 para produtos.
+
+Escolha o intervalo de datas de 01/01/2000 a 01/01/2025.
+
+Selecione as colunas desejadas e os países de origem das compras.
+
+Personalização:
+
+Adicione novos produtos eletrônicos à lista de produtos.
+
+Adicione novas lojas e vendedores.
+
+Adicione novos domínios de email.
+
+Geração de Dados:
+
+Clique em "Visualizar Dados" para gerar e visualizar os dados.
+
+Use os botões "Salvar como Excel" ou "Salvar como CSV" para exportar os dados.
+
+Visualização:
+
+Na janela de visualização, ajuste as colunas automaticamente com o botão "Ajustar Colunas".
+
+Salve os dados em um arquivo de texto com o botão "Salvar em Bloco de Notas".
+
+Agradecimentos
+Este projeto foi desenvolvido por Diogo Centeno como uma ferramenta para gerar dados fictícios de compras eletrônicas. Se precisar de suporte ou tiver sugestões, entre em contato.
+
+Licença
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
