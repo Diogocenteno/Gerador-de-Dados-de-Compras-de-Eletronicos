@@ -1,7 +1,8 @@
 🛍️ Gerador de Dados Fictícios de Compras Eletrônicas com Interface Tkinter
 Script Python com geração massiva de dados fictícios para simular compras de produtos eletrônicos. Possui interface gráfica interativa com Tkinter e geração automatizada de dados de clientes, lojas, produtos, entregadores, entre outros.
 
-![Captura de tela 2025-05-27 084742](https://github.com/user-attachments/assets/0fcc24b8-96b7-4785-a002-62f864edf8cc)
+<img width="1906" height="965" alt="Captura de tela 2025-09-03 110428" src="https://github.com/user-attachments/assets/0adeb080-ca1d-40b8-b4f3-120ca16a88fc" />
+
 
 🚀 Funcionalidades
 Geração de dados realistas com Faker e listas personalizadas
